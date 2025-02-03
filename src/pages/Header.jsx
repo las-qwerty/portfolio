@@ -1,21 +1,26 @@
-import { Button, Disclosure, DisclosureButton, DisclosurePanel, } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import {
+  Button,
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+} from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const navigation = [
-  { name: 'Home', href: '#', current: true },
-  { name: 'About me', href: '#about-me', current: false },
-  { name: 'Services', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-]
+  { name: "Home", href: "#", current: true },
+  { name: "About me", href: "#about-me", current: false },
+  { name: "Services", href: "#", current: false },
+  { name: "Projects", href: "#", current: false },
+];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 export default function Header() {
   const handleSmoothScroll = (e, href) => {
     e.preventDefault();
-    document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+    document.querySelector(href).scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -35,10 +40,12 @@ export default function Header() {
                         key={item.name}
                         href={item.href}
                         onClick={(e) => handleSmoothScroll(e, item.href)}
-                        aria-current={item.current ? 'page' : undefined}
+                        aria-current={item.current ? "page" : undefined}
                         className={classNames(
-                          item.current ? 'bg-white text-black' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium',
+                          item.current
+                            ? "bg-white text-black"
+                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                          "rounded-md px-3 py-2 text-sm font-medium"
                         )}
                       >
                         {item.name}
@@ -57,7 +64,7 @@ export default function Header() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-md bg-white py-1.5 px-3 text-sm/6 font-semibold text-black shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[hover]:text-white data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
                     type="button"
-                 >
+                  >
                     Contact me
                   </Button>
                 </div>
@@ -67,8 +74,14 @@ export default function Header() {
                 <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md bg-white p-2 text-black hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open main menu</span>
-                  <Bars3Icon aria-hidden="true" className="block size-6 group-data-open:hidden" />
-                  <XMarkIcon aria-hidden="true" className="hidden size-6 group-data-open:block" />
+                  <Bars3Icon
+                    aria-hidden="true"
+                    className="block size-6 group-data-open:hidden"
+                  />
+                  <XMarkIcon
+                    aria-hidden="true"
+                    className="hidden size-6 group-data-open:block"
+                  />
                 </DisclosureButton>
               </div>
             </div>
@@ -82,14 +95,15 @@ export default function Header() {
                   as="a"
                   href={item.href}
                   onClick={(e) => handleSmoothScroll(e, item.href)}
-                  aria-current={item.current ? 'page' : undefined}
+                  aria-current={item.current ? "page" : undefined}
                   className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block rounded-md px-3 py-2 text-base font-medium',
+                    item.current
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                    "block rounded-md px-3 py-2 text-base font-medium"
                   )}
                 >
                   {item.name}
-                  
                 </DisclosureButton>
               ))}
               <Button
@@ -99,7 +113,7 @@ export default function Header() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-md bg-white py-1.5 px-3 ml-2 text-sm/6 font-semibold text-black shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[hover]:text-white data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
                 type="button"
-             >
+              >
                 Hire me
               </Button>
             </div>
@@ -107,5 +121,5 @@ export default function Header() {
         </Disclosure>
       </div>
     </>
-  )
+  );
 }
