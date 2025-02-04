@@ -1,7 +1,7 @@
 import meImage from "../assets/portfolio-image-3.png";
 import Typewriter from "../animation/Typewriter";
-import { motion, useAnimation } from "framer-motion";
-import React, { useEffect } from "react";
+import { motion, useAnimation, useDragControls } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
 import wordpress from "../assets/wordpress.svg";
 import shopify from "../assets/shopify.png";
 import elementor from "../assets/elementor.svg";
@@ -17,24 +17,15 @@ import { Button } from "@headlessui/react";
 const text = "Hello!";
 const letters = text.split("");
 
-const SkillCard = ({ skill, controls }) => (
-  <motion.div
-    className="flex flex-col items-center bg-white p-4 rounded-lg shadow-md mx-2 min-w-[120px]"
-    onHoverStart={() => controls.stop()}
-    onHoverEnd={() =>
-      controls.start({
-        x: "-100%",
-        transition: { duration: 20, repeat: Infinity, ease: "linear" },
-      })
-    }
-  >
+const SkillCard = ({ skill }) => (
+  <div className="flex flex-col items-center bg-white p-4 rounded-lg shadow-md mx-2 min-w-[120px]">
     <img
       src={skill.logo}
       alt={`${skill.name} logo`}
       className="w-16 h-16 mb-2 object-contain"
     />
     <p className="text-base font-medium text-gray-800 mt-1">{skill.name}</p>
-  </motion.div>
+  </div>
 );
 
 export default function Contents() {
@@ -52,16 +43,25 @@ export default function Contents() {
     { name: "Tailwindcss", logo: tailwind },
   ];
 
+  const containerRef = useRef();
+  const contentRef = useRef();
+  const isDragging = useRef(false);
+
   useEffect(() => {
-    controls.start({
-      x: "-100%",
-      transition: {
-        duration: 20,
-        repeat: Infinity,
-        ease: "linear",
-        repeatType: "loop",
-      },
-    });
+    const startMarquee = async () => {
+      if (!isDragging.current) {
+        await controls.start({
+          x: "-200%",
+          transition: {
+            duration: 30,
+            repeat: Infinity,
+            ease: "linear",
+            repeatType: "loop",
+          },
+        });
+      }
+    };
+    startMarquee();
   }, [controls]);
 
   return (
@@ -163,7 +163,7 @@ export default function Contents() {
         id="about-me"
       >
         <div className="columns-2 md:columns-2 sm:px-6 lg:px-8 mx-auto max-w-7xl px-4 flex flex-col-reverse md:flex-row justify-center items-center pt-20 pb-10 sm:pt-10">
-          <div className="col-2 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col flex-wrap justify-center items-start pt-20 md:pt-0 w-full md:w-1/2 gap-4">
+          <div className="col-2 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col flex-wrap justify-center items-start pt-20 md:pt-0 w-full md:w-1/2 gap-3">
             {/* Service cards */}
             {[
               {
@@ -213,22 +213,37 @@ export default function Contents() {
               client goals and user needs.
             </p>
 
-            <div className="skills-section mt-5 w-full">
+            <div className="skills-section mt-5 w-full" ref={containerRef}>
               <p className="text-4xl text-white mb-5">Skills</p>
-              <div className="overflow-hidden mt-5 relative h-32 w-full">
+              <div className="overflow-hidden mt-5 relative h-32 w-full overflow-hidden mt-5 relative h-32 w-full hide-scrollbar no-select ">
                 <motion.div
-                  className="flex absolute top-0 left-0"
+                  className="flex absolute top-0 left-0 cursor-grab active:cursor-grabbing"
                   initial={{ x: "0%" }}
                   animate={controls}
-                  style={{ width: "200%" }}
+                  style={{ width: "300%" }}
+                  drag="x"
+                  dragConstraints={{ right: 0, left: -2000 }}
+                  dragElastic={0.1}
+                  onDragStart={() => {
+                    isDragging.current = true;
+                    controls.stop();
+                  }}
+                  onDragEnd={() => {
+                    isDragging.current = false;
+                    controls.start({
+                      x: "-200%",
+                      transition: {
+                        duration: 30,
+                        repeat: Infinity,
+                        ease: "linear",
+                        repeatType: "loop",
+                      },
+                    });
+                  }}
                 >
-                  <div className="flex flex-nowrap">
-                    {[...skills, ...skills].map((skill, index) => (
-                      <SkillCard
-                        key={index}
-                        skill={skill}
-                        controls={controls}
-                      />
+                  <div className="flex flex-nowrap" ref={contentRef}>
+                    {[...skills, ...skills, ...skills].map((skill, index) => (
+                      <SkillCard key={index} skill={skill} />
                     ))}
                   </div>
                 </motion.div>
