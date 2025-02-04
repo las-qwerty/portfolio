@@ -254,11 +254,9 @@ export default function Contents() {
       </div>
 
       {/* Portfolio Section */}
-      <div className="min-h-full pt-0 md:pt-20 items-center ">
+      <div className="min-h-full pt-0 md:pt-20 items-center">
+        <p className="text-4xl flex justify-center">My works</p>
         <div className="col-2 md:columns-2 sm:px-6 lg:px-8 mx-auto max-w-7xl px-4 flex flex-col md:flex-row justify-center items-center pt-10 md:pt-20">
-          <div className="col-2 flex flex-col w-full md:w-1/2">
-            <p className="text-4xl">My works</p>
-          </div>
           <div className="col-2 flex flex-col w-full md:w-1/2">
             {/* Left Column */}
             <p className="text-2xl">Shopify - Cloting Store</p>
