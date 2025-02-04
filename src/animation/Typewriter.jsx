@@ -22,7 +22,9 @@ const Typewriter = ({ text, delay }) => {
     }
   }, [currentIndex, delay, text]);
 
-  return <span className="text-5xl font-bold mt-5">{currentText}</span>;
+  return (
+    <span className="text-4xl md:text-5xl font-bold mt-5">{currentText}</span>
+  );
 };
 
 export default Typewriter;

@@ -9,6 +9,7 @@ import css from "../assets/css.png";
 import js from "../assets/js.png";
 import springboot from "../assets/springboot.svg";
 import java from "../assets/java.svg";
+import tailwind from "../assets/tailwindcss.png";
 import { Button } from "@headlessui/react";
 
 const text = "Hello!";
@@ -44,6 +45,7 @@ export default function Contents() {
     { name: "JavaScript", logo: js },
     { name: "Spring Boot", logo: springboot },
     { name: "Java", logo: java },
+    { name: "Tailwindcss", logo: tailwind },
   ];
 
   useEffect(() => {

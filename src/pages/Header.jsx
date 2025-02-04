@@ -7,7 +7,11 @@ import {
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const navigation = [
-  { name: "Home", href: "#", current: true },
+  {
+    name: "Home",
+    href: "https://las-qwerty.github.io/portfolio/",
+    current: true,
+  },
   { name: "About me", href: "#about-me", current: false },
   { name: "Services", href: "#", current: false },
   { name: "Projects", href: "#", current: false },
