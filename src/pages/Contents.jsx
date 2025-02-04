@@ -4,6 +4,8 @@ import { motion, useAnimation } from "framer-motion";
 import React, { useEffect } from "react";
 import wordpress from "../assets/wordpress.svg";
 import shopify from "../assets/shopify.png";
+import elementor from "../assets/elementor.svg";
+import divi from "../assets/divi.png";
 import html from "../assets/html.png";
 import css from "../assets/css.png";
 import js from "../assets/js.png";
@@ -40,6 +42,8 @@ export default function Contents() {
   const skills = [
     { name: "WordPress", logo: wordpress },
     { name: "Shopify", logo: shopify },
+    { name: "Elementor", logo: elementor },
+    { name: "Divi", logo: divi },
     { name: "HTML", logo: html },
     { name: "CSS", logo: css },
     { name: "JavaScript", logo: js },
@@ -51,7 +55,12 @@ export default function Contents() {
   useEffect(() => {
     controls.start({
       x: "-100%",
-      transition: { duration: 20, repeat: Infinity, ease: "linear" },
+      transition: {
+        duration: 20,
+        repeat: Infinity,
+        ease: "linear",
+        repeatType: "loop",
+      },
     });
   }, [controls]);
 
@@ -209,7 +218,7 @@ export default function Contents() {
               <div className="overflow-hidden mt-5 relative h-32 w-full">
                 <motion.div
                   className="flex absolute top-0 left-0"
-                  initial={{ x: "100%" }}
+                  initial={{ x: "0%" }}
                   animate={controls}
                   style={{ width: "200%" }}
                 >
@@ -225,6 +234,23 @@ export default function Contents() {
                 </motion.div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Portfolio Section */}
+      <div className="min-h-full pt-0 md:pt-20 items-center ">
+        <div className="col-2 md:columns-2 sm:px-6 lg:px-8 mx-auto max-w-7xl px-4 flex flex-col md:flex-row justify-center items-center pt-10 md:pt-20">
+          <div className="col-2 flex flex-col w-full md:w-1/2">
+            <p className="text-4xl">My works</p>
+          </div>
+          <div className="col-2 flex flex-col w-full md:w-1/2">
+            {/* Left Column */}
+            <p className="text-2xl">Shopify - Cloting Store</p>
+          </div>
+          <div className="col-2 flex flex-col w-full md:w-1/2">
+            {/* Right Column */}
+            <p className="text-2xl">Shopify - Cloting Store</p>
           </div>
         </div>
       </div>
