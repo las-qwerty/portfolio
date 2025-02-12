@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 
 export default function MouseEffect() {
     useEffect(() => {
-        gsap.set(".ball", { xPercent: -50, yPercent: -50 });
+        gsap.set(".ball", { xPercent: -50, yPercent: -50, zIndex: 9999 });
         let targets = gsap.utils.toArray(".ball");
         window.addEventListener("mousemove", (e) => {
           gsap.to(targets, {

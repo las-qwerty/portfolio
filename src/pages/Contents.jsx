@@ -12,13 +12,15 @@ import js from "../assets/js.png";
 import springboot from "../assets/springboot.svg";
 import java from "../assets/java.svg";
 import tailwind from "../assets/tailwindcss.png";
+import project1 from "../assets/vwtl-website.png";
+import project2 from "../assets/gencool-website.png"
 import { Button } from "@headlessui/react";
 
 const text = "Hello!";
 const letters = text.split("");
 
-const SkillCard = ({ skill }) => (
-  <div className="flex flex-col items-center bg-white p-4 rounded-lg shadow-md mx-2 min-w-[120px]">
+const  SkillCard = ({ skill }) => (
+  <div className="flex flex-col items-center bg-white p-5 rounded-lg shadow-md mx-2 min-w-[120px]">
     <img
       src={skill.logo}
       alt={`${skill.name} logo`}
@@ -28,7 +30,36 @@ const SkillCard = ({ skill }) => (
   </div>
 );
 
+const PortfolioCard = ({ portfolio_card }) => (
+  <div className="flex flex-col items-center p-7 bg-white rounded-2xl drop-shadow-2xl w-full">
+    <div className="w-full h-64 overflow-hidden">
+      <img src={portfolio_card.img} alt="" className="w-full h-full object-cover rounded-md"/>
+    </div>
+    <p className="text-lg font-medium text-gray-800 mt-4">{portfolio_card.title}</p>
+    <span className="text-sm text-gray-600 mt-2">{portfolio_card.description}</span>
+    <div className="mt-4">
+      <Button as="a"
+                href={portfolio_card.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                type="button"
+                className="inline-flex items-center gap-2 rounded-md bg-black hover:bg-white py-2 px-4 text-sm font-semibold text-white shadow-inner shadow-white/10 focus:outline-none hover:text-black border-2 solid">
+      {portfolio_card.button}
+      </Button>
+    </div>
+  </div>
+);
+
 export default function Contents() {
+
+  const portfolio_cards = [
+    { img: project1, title: "E-commerce Website", description: "Description 1", button: "View", link: "https://vibewiththelegends.ph/"},
+    { img: project2, title: "Business Website", description: "Description 1", button: "View", link: "https://gencoolhvac.com/"},
+    { img: project1, title: "Clothing Store", description: "Description 1", button: "View", link: "https://vibewiththelegends.ph/"}
+
+  ]
+
+  // start code for about section skills 
   const controls = useAnimation();
   const skills = [
     { name: "WordPress", logo: wordpress },
@@ -63,6 +94,7 @@ export default function Contents() {
     };
     startMarquee();
   }, [controls]);
+  // end code for about section skills 
 
   return (
     <>
@@ -70,7 +102,7 @@ export default function Contents() {
         <div className="col-2 md:columns-2 sm:px-6 lg:px-8 mx-auto max-w-7xl px-4 flex flex-col md:flex-row justify-center items-center pt-20 md:pt-0">
           <div className="flex flex-col justify-center p-4 w-full md:w-1/2">
             <motion.p
-              className="text-2xl underline"
+              className="text-2xl"
               initial="hidden"
               animate="visible"
               style={{ display: "flex" }}
@@ -130,7 +162,7 @@ export default function Contents() {
                 target="_blank"
                 rel="noopener noreferrer"
                 type="button"
-                className="inline-flex items-center gap-2 rounded-md bg-black py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none hover:bg-gray-600 hover:text-white"
+                className="inline-flex items-center gap-2 rounded-md bg-black hover:bg-white py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none hover:text-black border-2 solid"
               >
                 View CV
               </Button>
@@ -140,7 +172,7 @@ export default function Contents() {
                 target="_blank"
                 rel="noopener noreferrer"
                 type="button"
-                className="inline-flex items-center gap-2 rounded-md border-2 border-black py-1.5 px-3 text-sm/6 font-semibold text-black shadow-inner shadow-white/10 focus:outline-none hover:bg-gray-600 hover:text-white hover:border-gray-600 ms-8"
+                className="inline-flex items-center gap-2 rounded-md border-2 border-black py-1.5 px-3 text-sm/6 font-semibold text-black shadow-inner shadow-white/10 focus:outline-none hover:bg-black hover:text-white ms-8"
               >
                 Contact me
               </Button>
@@ -169,12 +201,12 @@ export default function Contents() {
               {
                 title: "Custom Web Solutions",
                 description:
-                  "Delivering beautifully designed and functional custom websites and online marketplaces.",
+                  "Providing custom websites and online marketplaces that combine stunning design with seamless functionality, built to enhance your online presence and meet your unique business objectives.",
               },
               {
                 title: "Expert in WordPress & Shopify",
                 description:
-                  "Building user-friendly, responsive websites to satisfy your requirements.",
+                  "Creating responsive, user-friendly websites that are tailored to your needs, ensuring a smooth experience on any device while meeting your specific goals.",
               },
               {
                 title: "Turning Ideas into Websites",
@@ -215,7 +247,7 @@ export default function Contents() {
 
             <div className="skills-section mt-5 w-full" ref={containerRef}>
               <p className="text-4xl text-white mb-5">Skills</p>
-              <div className="overflow-hidden mt-5 relative h-32 w-full overflow-hidden mt-5 relative h-32 w-full hide-scrollbar no-select ">
+              <div className="mt-5 relative h-32 w-full overflow-hidden hide-scrollbar no-select ">
                 <motion.div
                   className="flex absolute top-0 left-0 cursor-grab active:cursor-grabbing"
                   initial={{ x: "0%" }}
@@ -254,16 +286,14 @@ export default function Contents() {
       </div>
 
       {/* Portfolio Section */}
-      <div className="min-h-full pt-0 md:pt-20 items-center">
-        <p className="text-4xl flex justify-center">My works</p>
-        <div className="col-2 md:columns-2 sm:px-6 lg:px-8 mx-auto max-w-7xl px-4 flex flex-col md:flex-row justify-center items-center pt-10 md:pt-20">
-          <div className="col-2 flex flex-col w-full md:w-1/2">
-            {/* Left Column */}
-            <p className="text-2xl">Shopify - Cloting Store</p>
-          </div>
-          <div className="col-2 flex flex-col w-full md:w-1/2">
-            {/* Right Column */}
-            <p className="text-2xl">Shopify - Cloting Store</p>
+      <div className="min-h-full pt-20 md:pt-20 items-center">
+        <p className="text-4xl flex justify-center">Projects</p>
+        <div className="col-2 md:columns-2 sm:px-6 lg:px-8 mx-auto max-w-7xl px-4 flex flex-row md:flex-row justify-center items-center pt-10 md:pt-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Portfolio Cards */}
+            {portfolio_cards.map((card, index) => (
+              <PortfolioCard key={index} portfolio_card={card} />
+            ))}
           </div>
         </div>
       </div>
