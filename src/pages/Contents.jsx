@@ -13,13 +13,14 @@ import springboot from "../assets/springboot.svg";
 import java from "../assets/java.svg";
 import tailwind from "../assets/tailwindcss.png";
 import project1 from "../assets/vwtl-website.png";
-import project2 from "../assets/gencool-website.png"
+import project2 from "../assets/gencool-website.png";
+import project3 from "../assets/exclusiveblanks-web.png";
 import { Button } from "@headlessui/react";
 
 const text = "Hello!";
 const letters = text.split("");
 
-const  SkillCard = ({ skill }) => (
+const SkillCard = ({ skill }) => (
   <div className="flex flex-col items-center bg-white p-5 rounded-lg shadow-md mx-2 min-w-[120px]">
     <img
       src={skill.logo}
@@ -32,34 +33,60 @@ const  SkillCard = ({ skill }) => (
 
 const PortfolioCard = ({ portfolio_card }) => (
   <div className="flex flex-col items-center p-7 bg-white rounded-2xl drop-shadow-2xl w-full">
-    <div className="w-full h-64 overflow-hidden">
-      <img src={portfolio_card.img} alt="" className="w-full h-full object-cover rounded-md"/>
+    <div className="w-full h-full overflow-hidden">
+      <img
+        src={portfolio_card.img}
+        alt=""
+        className="w-full h-full object-cover rounded-md"
+      />
     </div>
-    <p className="text-lg font-medium text-gray-800 mt-4">{portfolio_card.title}</p>
-    <span className="text-sm text-gray-600 mt-2">{portfolio_card.description}</span>
+    <p className="text-lg font-medium text-gray-800 mt-4">
+      {portfolio_card.title}
+    </p>
+    <span className="text-sm text-gray-600 mt-2">
+      {portfolio_card.description}
+    </span>
     <div className="mt-4">
-      <Button as="a"
-                href={portfolio_card.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                type="button"
-                className="inline-flex items-center gap-2 rounded-md bg-black hover:bg-white py-2 px-4 text-sm font-semibold text-white shadow-inner shadow-white/10 focus:outline-none hover:text-black border-2 solid">
-      {portfolio_card.button}
+      <Button
+        as="a"
+        href={portfolio_card.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        type="button"
+        className="inline-flex items-center gap-2 rounded-md bg-black hover:bg-white py-2 px-4 text-sm font-semibold text-white shadow-inner shadow-white/10 focus:outline-none hover:text-black border-2 solid"
+      >
+        {portfolio_card.button}
       </Button>
     </div>
   </div>
 );
 
 export default function Contents() {
-
   const portfolio_cards = [
-    { img: project1, title: "E-commerce Website", description: "Description 1", button: "View", link: "https://vibewiththelegends.ph/"},
-    { img: project2, title: "Business Website", description: "Description 1", button: "View", link: "https://gencoolhvac.com/"},
-    { img: project1, title: "Clothing Store", description: "Description 1", button: "View", link: "https://vibewiththelegends.ph/"}
+    {
+      img: project1,
+      title: "E-commerce Website",
+      description: "Description 1",
+      button: "View",
+      link: "https://vibewiththelegends.ph/",
+    },
+    {
+      img: project2,
+      title: "Business Website",
+      description: "Description 1",
+      button: "View",
+      link: "https://gencoolhvac.com/",
+    },
+    {
+      img: project3,
+      title: "E-commerce Website",
+      description: "Description 1",
+      button: "View",
+      link: "https://exclusiveblanks.com/",
+    },
+  ];
 
-  ]
-
-  // start code for about section skills 
+  // start code for about section skills
   const controls = useAnimation();
   const skills = [
     { name: "WordPress", logo: wordpress },
@@ -94,7 +121,7 @@ export default function Contents() {
     };
     startMarquee();
   }, [controls]);
-  // end code for about section skills 
+  // end code for about section skills
 
   return (
     <>
