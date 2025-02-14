@@ -12,7 +12,7 @@ const navigation = [
     href: "https://las-qwerty.github.io/portfolio/",
     current: true,
   },
-  { name: "About me", href: "#about-me", current: false },
+  { name: "About", href: "#about-me", current: false },
   { name: "Services", href: "#", current: false },
   { name: "Projects", href: "#", current: false },
 ];
