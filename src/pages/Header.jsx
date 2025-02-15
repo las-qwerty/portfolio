@@ -12,9 +12,15 @@ const navigation = [
     href: "https://las-qwerty.github.io/portfolio/",
     current: true,
   },
+<<<<<<< HEAD
   { name: "About me", href: "#about-me", current: false },
   { name: "Projects", href: "#projects", current: false },
   { name: "Service  ", href: "#", current: false },
+=======
+  { name: "About", href: "#about-me", current: false },
+  { name: "Services", href: "#", current: false },
+  { name: "Projects", href: "#", current: false },
+>>>>>>> 9e521a8e0c8d99c043a5c13829330a2a8c5c2979
 ];
 
 function classNames(...classes) {
