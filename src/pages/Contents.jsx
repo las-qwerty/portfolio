@@ -13,7 +13,8 @@ import springboot from "../assets/springboot.svg";
 import java from "../assets/java.svg";
 import tailwind from "../assets/tailwindcss.png";
 import project1 from "../assets/vwtl-website.png";
-import project2 from "../assets/gencool-website.png"
+import project2 from "../assets/gencool-website.png";
+import project3 from "../assets/exclusiveblanks-web.png";
 import { Button } from "@headlessui/react";
 
 const text = "Hello!";
@@ -36,7 +37,7 @@ const PortfolioCard = ({ portfolio_card }) => (
       <img src={portfolio_card.img} alt="" className="w-full h-full object-cover rounded-md"/>
     </div>
     <p className="text-lg font-medium text-gray-800 mt-4">{portfolio_card.title}</p>
-    <span className="text-sm text-gray-600 mt-2">{portfolio_card.description}</span>
+    <span className="text-sm text-gray-600 mt-2 text-center">{portfolio_card.description}</span>
     <div className="mt-4">
       <Button as="a"
                 href={portfolio_card.link}
@@ -53,9 +54,9 @@ const PortfolioCard = ({ portfolio_card }) => (
 export default function Contents() {
 
   const portfolio_cards = [
-    { img: project1, title: "E-commerce Website", description: "Description 1", button: "View", link: "https://vibewiththelegends.ph/"},
+    { img: project1, title: "E-commerce Website", description: "This Shopify e-commerce website was built for a local clothing business in the Philippines, designed to showcase the brand’s style and offer a seamless shopping experience.", button: "View", link: "https://vibewiththelegends.ph/"},
     { img: project2, title: "Business Website", description: "Description 1", button: "View", link: "https://gencoolhvac.com/"},
-    { img: project1, title: "Clothing Store", description: "Description 1", button: "View", link: "https://vibewiththelegends.ph/"}
+    { img: project3, title: "E-commerce Website", description: "Description 1", button: "View", link: "https://exclusiveblanks.com/"}
 
   ]
 
@@ -286,7 +287,7 @@ export default function Contents() {
       </div>
 
       {/* Portfolio Section */}
-      <div className="min-h-full pt-20 md:pt-20 items-center">
+      <div className="min-h-full pt-20 md:pt-20 items-center" id="projects">
         <p className="text-4xl flex justify-center">Projects</p>
         <div className="col-2 md:columns-2 sm:px-6 lg:px-8 mx-auto max-w-7xl px-4 flex flex-row md:flex-row justify-center items-center pt-10 md:pt-20">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
